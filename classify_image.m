@@ -18,7 +18,6 @@ else
     end
 end
 
-disp( distances);
 classe = 0;
 
 for c=1:n
