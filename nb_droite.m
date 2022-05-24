@@ -19,7 +19,7 @@ lines = houghlines(BW,T,R,P,'FillGap',6,'MinLength',40);
 compte = 0;
 seuil = 10;
     for k = 1:length(lines)
-         for j = k+1:length(lines)[2]
+         for j = k+1:length(lines)
             if (abs(lines(k).theta-lines(j).theta)<=seuil)
                 compte=compte+1;
             end
