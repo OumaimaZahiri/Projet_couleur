@@ -24,7 +24,7 @@ for c = 0 : (nb_classes - 1)
 
         signature_personnages{c+1}(i, 1) = nb_couleurs(I, tolerance);
         signature_personnages{c+1}(i, 2) = variance_zone(I);
-        signature_personnages{c+1}(i, 3) = nb_cercle(I);
+        signature_personnages{c+1}(i, 3) = fctdemembrage(I);
         signature_personnages{c+1}(i,4) = Parallelisme(I);
     end
 
