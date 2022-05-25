@@ -9,9 +9,9 @@ nb_personnage_classe = [ 28, 24, 23, 18, 17];
 nb_maison_classe = [ 28, 26, 17, 19, 18];
 tolerance = 0.05;
 
-% centroides pour chaque classe de dimension 4 (4 caractéristiques)
-centroides_personnages = zeros(nb_classes, 4);
-centroides_maisons = zeros(nb_classes, 4);
+% centroides pour chaque classe de dimension 4 (4 caractéristiques) non 5
+centroides_personnages = zeros(nb_classes, 5);
+centroides_maisons = zeros(nb_classes, 5);
 
 %% enregistrement des signatures de la moitié des images de chaque classe
 
@@ -25,10 +25,11 @@ for c = 0 : (nb_classes - 1)
         signature_personnages{c+1}(i, 1) = nb_couleurs(I, tolerance);
         signature_personnages{c+1}(i, 2) = variance_zone(I);
         signature_personnages{c+1}(i, 3) = nb_cercle(I);
-        signature_personnages{c+1}(i,4) = nb_droite(I);
+        signature_personnages{c+1}(i, 4) = nb_droite(I);
+        signature_personnages{c+1}(i, 5) = fctdemembrage(I);
     end
 
-    signature_maisons{c+1} = zeros(floor(nb_maison_classe(c+1)), 4);
+    signature_maisons{c+1} = zeros(floor(nb_maison_classe(c+1)), 5);
     for n = 1:nb_maison_classe(c + 1)
         %         i = (n+1) / 2;
         i = n;
@@ -38,6 +39,7 @@ for c = 0 : (nb_classes - 1)
         signature_maisons{c+1}(i, 2) = variance_zone(I);
         signature_maisons{c+1}(i, 3) = nb_cercle(I);
         signature_maisons{c+1}(i,4) = nb_droite(I);
+        signature_maison{c+1}(i, 5) = fctdemembrage(I);
     end
 end
 
@@ -48,11 +50,13 @@ for c=1:nb_classes
     centroides_personnages(c, 2) = 1 / nb_personnage_classe(c) * sum(signature_personnages{c}(:, 2));
     centroides_personnages(c, 3) = 1 / nb_personnage_classe(c) * sum(signature_personnages{c}(:, 3));
     centroides_personnages(c, 4) = 1 / nb_personnage_classe(c) * sum(signature_personnages{c}(:, 4));
+    centroides_personnages(c, 5) = 1 / nb_personnage_classe(c) * sum(signature_personnages{c}(:, 5));
 
     centroides_maisons(c, 1) = 1 / nb_maison_classe(c) * sum(signature_maisons{c}(:, 1));
     centroides_maisons(c, 2) = 1 / nb_maison_classe(c) * sum(signature_maisons{c}(:, 2));
     centroides_maisons(c, 3) = 1 / nb_maison_classe(c) * sum(signature_maisons{c}(:, 3));
     centroides_maisons(c, 4) = 1 / nb_maison_classe(c) * sum(signature_maisons{c}(:, 4));
+    centroides_maisons(c, 5) = 1 / nb_maison_classe(c) * sum(signature_maisons{c}(:, 5));
 
 end
 

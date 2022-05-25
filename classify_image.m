@@ -1,6 +1,6 @@
 function classe = classify_image(I, type, premier_age, centroides_maison, centroides_personnages)
 
-signature = [nb_couleurs(I, 0.05), variance_zone(I), nb_cercle(I), nb_droite(I)];
+signature = [nb_couleurs(I, 0.05), variance_zone(I), nb_cercle(I), nb_droite(I),fctdemembrage(I)];
 
 n =size(centroides_maison, 1);
 
@@ -18,7 +18,6 @@ else
     end
 end
 
-disp( distances);
 classe = 0;
 
 for c=1:n
