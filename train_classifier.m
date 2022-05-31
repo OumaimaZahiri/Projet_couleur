@@ -1,3 +1,4 @@
+
 %% Dessinage, entrainement du classifieur. Calcul des centroides des classes.
 clear all; close all; clc
 %% variables

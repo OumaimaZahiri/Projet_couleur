@@ -21,9 +21,9 @@ function Parallel_index = Parallelisme(I)
     x = T(P(:,2));
     y = R(P(:,1));
 
-    lines = houghlines(BW3,T,R,P,'FillGap',8,'MinLength',25);
+    lines = houghlines(BW3,T,R,P,'FillGap',6,'MinLength',25);
     compte = 0;
-    seuilAngle = 3;
+    seuilAngle = 6;
     seuilRho = 40;
       for k = 1:length(lines)
         for j = k+1:length(lines)
