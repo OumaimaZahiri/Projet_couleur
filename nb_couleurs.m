@@ -3,7 +3,7 @@ function nb = nb_couleurs(I,tolerance)
 %   Detailed explanation goes here
 
 %% compter les couleurs
-k = 2;
+k = 1;
 n = 2^k;
 d = 256 / n;
 IG = 255 - rgb2gray(I);
@@ -21,14 +21,14 @@ ZOI = imfill(ZOI, 'holes') - 1;
 
 I = I .* uint8(floor(ZOI));
 
-IQ_int = uint8(floor(double(I)/d)*d);
+IQ_int = uint8(floor(double(I)/d)*d) + floor(d / 2);
 [~, map] = rgb2ind(IQ_int, tolerance);
 
 
 
-figure(4),
-subplot(1,2,1), imshow(IQ_int, []); colormap('default'); colorbar
-subplot(1,2,2), imshow(I, []); colormap(map); colorbar
+% figure(4),
+% subplot(1,2,1), imshow(IQ_int, []); colormap('default'); colorbar
+% subplot(1,2,2), imshow(I, []); colormap(map); colorbar
 
 % 3/ Comptage des couleurs
 [nb, ~] = size(map);
