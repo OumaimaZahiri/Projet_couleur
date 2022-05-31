@@ -3,7 +3,7 @@ clear all; close all; clc
 %% chargement des centroides calculés et variables
 
 load("centroides.mat");
-nb_classes = 4;
+nb_classes = 5;
 
 premier_age = 5;
 nb_personnage_classe = [ 28, 24, 23, 18, 17];

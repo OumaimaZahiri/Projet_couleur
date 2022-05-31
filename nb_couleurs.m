@@ -26,9 +26,9 @@ IQ_int = uint8(floor(double(I)/d)*d);
 
 
 
-figure(4),
-subplot(1,2,1), imshow(IQ_int, []); colormap('default'); colorbar
-subplot(1,2,2), imshow(I, []); colormap(map); colorbar
+% figure(4),
+% subplot(1,2,1), imshow(IQ_int, []); colormap('default'); colorbar
+% subplot(1,2,2), imshow(I, []); colormap(map); colorbar
 
 % 3/ Comptage des couleurs
 [nb, ~] = size(map);

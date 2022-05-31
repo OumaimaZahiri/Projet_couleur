@@ -27,7 +27,7 @@ function Parallel_index = Parallelisme(I)
     seuilRho = 40;
       for k = 1:length(lines)
         for j = k+1:length(lines)
-            if (abs(lines(k).theta-lines(j).theta)<=seuilAngle)&&(abs(lines(k).rho-lines(j).rho)>=seuilRho)
+            if (abs(abs(lines(k).theta)-abs(lines(j).theta))<=seuilAngle)&&(abs(lines(k).rho-lines(j).rho)>=seuilRho)
                 compte=compte+1;
             end
         end
