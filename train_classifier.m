@@ -1,3 +1,4 @@
+
 %% Dessinage, entrainement du classifieur. Calcul des centroides des classes.
 clear all; close all; clc
 %% variables
@@ -24,8 +25,8 @@ for c = 0 : (nb_classes - 1)
 
         signature_personnages{c+1}(i, 1) = nb_couleurs(I, tolerance);
         signature_personnages{c+1}(i, 2) = variance_zone(I);
-        signature_personnages{c+1}(i, 3) = nb_cercle(I);
-        signature_personnages{c+1}(i,4) = nb_droite(I);
+        signature_personnages{c+1}(i, 3) = fctdemembrage(I);
+        signature_personnages{c+1}(i,4) = Parallelisme(I);
     end
 
     signature_maisons{c+1} = zeros(floor(nb_maison_classe(c+1)), 4);
@@ -37,7 +38,7 @@ for c = 0 : (nb_classes - 1)
         signature_maisons{c+1}(i, 1) = nb_couleurs(I, tolerance);
         signature_maisons{c+1}(i, 2) = variance_zone(I);
         signature_maisons{c+1}(i, 3) = nb_cercle(I);
-        signature_maisons{c+1}(i,4) = nb_droite(I);
+        signature_maisons{c+1}(i,4) = Parallelisme(I);
     end
 end
 
