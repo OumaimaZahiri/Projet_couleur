@@ -9,23 +9,31 @@ premier_age = 5;
 nb_personnage_classe = [ 28, 24, 23, 18, 17];
 nb_maison_classe = [ 28, 26, 17, 19, 18];
 
+total_img = (sum(nb_maison_classe) + sum(nb_personnage_classe)) / 2;
+chargement=0;
+f=waitbar(chargement, "Progression...");
+
 %% attribution d'une classe pour chaque image
 
 for c = 0 : (nb_classes - 1)
     classe_personnages{c + 1} = zeros(floor(nb_personnage_classe(c+1) / 2), 1);
-    for n = 2:2:nb_personnage_classe(c + 1)
-        i = n / 2;
+    for n = 1:2:nb_personnage_classe(c + 1)
+        i = n;
         I = imread(sprintf('Database_compressed/%d ans/bonhomme/personnage_%d_%d.jpg', c + premier_age, c + premier_age, n));
 
         classe_personnages{c+1}(i) = classify_image(I, 'personnage', premier_age, centroides_maisons, centroides_personnages);
+        chargement = chargement + 1 / total_img;
+        waitbar(chargement, f,"Progression...");
     end
 
     classe_maisons{c+1} = zeros(floor(nb_maison_classe(c+1) / 2), 1);
     for n = 1:2:nb_maison_classe(c + 1)
-        i = (n+1) / 2;
+        i = n;
         I = imread(sprintf('Database_compressed/%d ans/maison/maison_%d_%d.jpg', c + premier_age, c + premier_age, n));
 
         classe_maisons{c+1}(i, 1) = classify_image(I, 'maison', premier_age, centroides_maisons, centroides_personnages);
+        chargement = chargement + 1 / total_img;
+        waitbar(chargement, f,"Progression...");
     end
 end
 

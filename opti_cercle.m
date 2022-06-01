@@ -1,6 +1,7 @@
-function nb = nb_cercle(I)
-%NB_CERCLE Summary of this function goes here
-%   Detailed explanation goes here
+%% optimisation nb cercle
+clear all; close all; clc
+
+I = imread("Database_compressed\7 ans\bonhomme\personnage_7_13.jpg");
 
 I = imgaussfilt(I, 0.7);
 
@@ -15,6 +16,9 @@ I=(255-I)/255;
 % BW2 =imerode(BW2,se);
 BW3 = double(edge(I,'canny',0.5));
 
+figure(),
+imshow(BW3, []); colorbar
+
 [m, n] = size(BW3);
 mini = (m + n) / 100;
 maxi = (m + n) / log(m*n);
@@ -24,6 +28,12 @@ h = circle_hough(BW3, radii, 'same');
 seuil = 0.9*max(h(:));
 peaks = circle_houghpeaks(h, radii, 'npeaks', 2, 'threshold', seuil);
 
-nb = size(peaks,2);
+figure,
+imshow(RGB);
+hold on;
+for peak = peaks
+    
+    [x, y] = circlepoints(peak(3));
+    plot(x+peak(1), y+peak(2), 'g-');
 end
-
+hold off

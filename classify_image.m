@@ -1,6 +1,11 @@
 function classe = classify_image(I, type, premier_age, centroides_maison, centroides_personnages)
+%CLASSIFY_IMAGE Classify an image using the trained classifier
+%   CLASSE = CLASSIFY_IMAGE(I, TYPE, PREMIER_AGE, CENTROIDES_MAISON,
+%   CENTROIDES_PERSONNAGES) takes a 2D-RGB images of a children's drawing
+%   and return his age. 
+%
 
-signature = [nb_couleurs(I, 0.05), variance_zone(I), fctdemembrage(I), Parallelisme(I)];
+signature = [nombrecouleurstest(I), variance_zone(I), nb_cercle(I), Parallelisme(I)];
 
 n =size(centroides_maison, 1);
 
